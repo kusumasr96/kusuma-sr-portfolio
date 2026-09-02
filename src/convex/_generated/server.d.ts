@@ -1,11 +1,11 @@
 import { GenericActionCtx, GenericMutationCtx, GenericQueryCtx } from "convex/server";
 
-export declare const query: any;
-export declare const mutation: any;
-export declare const action: any;
-export declare const internalQuery: any;
-export declare const internalMutation: any;
-export declare const internalAction: any;
+export const query: any;
+export const mutation: any;
+export const action: any;
+export const internalQuery: any;
+export const internalMutation: any;
+export const internalAction: any;
 
 export type QueryCtx = GenericQueryCtx<any>;
 export type MutationCtx = GenericMutationCtx<any>;
