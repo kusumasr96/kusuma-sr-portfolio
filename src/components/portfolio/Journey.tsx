@@ -1,40 +1,99 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Globe, Terminal, Sparkles, Trophy, Laptop } from "lucide-react";
+import {
+  GraduationCap,
+  Code,
+  Globe,
+  Trophy,
+  Briefcase,
+  Rocket,
+  Circle,
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const JOURNEY_ITEMS = [
+const MILESTONES = [
   {
-    icon: Globe,
-    title: "Frontend Development",
-    desc: "Building responsive and interactive web experiences with modern frameworks and tools.",
+    year: "2023",
+    title: "Started My CSE Journey",
+    icon: GraduationCap,
     color: "#7c9cf5",
+    items: [
+      "Began my Computer Science and Engineering journey",
+      "Built a foundation in programming and computer science concepts",
+    ],
   },
   {
-    icon: Terminal,
-    title: "Java & DSA",
-    desc: "Developing programming and problem-solving skills through structured practice.",
+    year: "2024",
+    title: "Building My Programming Foundation",
+    icon: Code,
     color: "#a78bfa",
+    items: [
+      "Strengthened programming fundamentals and problem-solving skills",
+      "Started exploring web development",
+      "Began building small projects",
+      "Started developing frontend skills",
+    ],
   },
   {
-    icon: Sparkles,
-    title: "AI Projects",
-    desc: "Exploring AI-powered applications and building practical solutions for real problems.",
+    year: "2025",
+    title: "Web Development & AI Training",
+    icon: Globe,
     color: "#6ee7b7",
+    highlight: true,
+    subtitle: "8-Week Web Development with AI Training",
+    items: [
+      "Successfully completed an 8-week training in Web Development with AI",
+      "Gained hands-on exposure to HTML, CSS, Bootstrap, DBMS, PHP, JavaScript, React",
+      "Started building practical web projects",
+      "Improved understanding of frontend and web development",
+    ],
   },
   {
+    year: "2026",
+    title: "Hackathons, Projects & Professional Experience",
     icon: Trophy,
-    title: "Hackathons",
-    desc: "Building innovative solutions under real-world constraints and tight deadlines.",
     color: "#fbbf24",
+    highlight: true,
+    events: [
+      {
+        label: "HACKHAZARDS 2026",
+        items: [
+          "Participated in HACKHAZARDS 2026 organized by NAMESPACE Community",
+          "Gained experience in innovation, technical problem-solving and collaborative development",
+          "Received a Certificate of Participation",
+        ],
+      },
+      {
+        label: "Placement AI",
+        items: [
+          "Built and deployed Placement AI, an AI-powered placement preparation platform",
+          "Combined web development and AI to create a practical student-focused solution",
+        ],
+      },
+      {
+        label: "Web Development Internship",
+        items: [
+          "Currently working as a Web Development Intern",
+          "Building responsive and interactive websites",
+          "Working with modern web development technologies",
+          "Completing practical development tasks and gaining real-world experience",
+        ],
+      },
+    ],
   },
   {
-    icon: Laptop,
-    title: "Internship Experience",
-    desc: "Applying frontend development skills to practical, professional development tasks.",
+    year: "Now",
+    title: "Growing as a Developer",
+    icon: Rocket,
     color: "#f472b6",
+    current: true,
+    items: [
+      "Currently improving my Java, DSA, frontend development, AI and problem-solving skills",
+      "Gaining professional experience through my Web Development Internship",
+      "Building real-world projects and exploring new technologies",
+    ],
   },
 ];
 
@@ -59,14 +118,22 @@ export function Journey() {
         scrollTrigger: { trigger: el, start: "top 85%" },
       });
 
-      gsap.from(".journey-card", {
+      gsap.from(".timeline-node", {
         opacity: 0,
-        y: 40,
-        scale: 0.95,
+        x: -20,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.12,
+        scrollTrigger: { trigger: el, start: "top 65%" },
+      });
+
+      gsap.from(".timeline-card", {
+        opacity: 0,
+        y: 30,
         duration: 0.7,
         ease: "power3.out",
-        stagger: 0.1,
-        scrollTrigger: { trigger: el, start: "top 70%" },
+        stagger: 0.12,
+        scrollTrigger: { trigger: el, start: "top 65%" },
       });
     }, el);
 
@@ -78,8 +145,8 @@ export function Journey() {
       ref={sectionRef}
       className="clay-section py-28 sm:py-36 px-6"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="journey-heading text-center mb-16">
+      <div className="max-w-4xl mx-auto">
+        <div className="journey-heading text-center mb-20">
           <span className="text-xs tracking-[0.3em] uppercase text-primary/70 font-semibold mb-4 block">
             Growth
           </span>
@@ -91,33 +158,129 @@ export function Journey() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {JOURNEY_ITEMS.map((item) => (
-            <div
-              key={item.title}
-              className="journey-card clay-card p-7 rounded-2xl group hover:scale-[1.03] transition-all duration-500 cursor-default"
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110"
-                style={{
-                  background: `${item.color}18`,
-                  boxShadow: `0 0 24px ${item.color}12`,
-                }}
-              >
-                <item.icon
-                  size={22}
-                  style={{ color: item.color }}
-                  strokeWidth={1.8}
-                />
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-[27px] sm:left-[31px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-accent/25 to-primary/10" />
+
+          <div className="space-y-12">
+            {MILESTONES.map((milestone) => (
+              <div key={milestone.year} className="relative flex gap-6 sm:gap-8">
+                {/* Node */}
+                <div className="timeline-node relative flex-shrink-0 flex flex-col items-center">
+                  <div
+                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center z-10 transition-all duration-500 ${
+                      milestone.current
+                        ? "ring-2 ring-primary/40 ring-offset-2 ring-offset-[var(--background)]"
+                        : ""
+                    }`}
+                    style={{
+                      background: `${milestone.color}18`,
+                      boxShadow: `0 0 30px ${milestone.color}15`,
+                    }}
+                  >
+                    <milestone.icon
+                      size={24}
+                      style={{ color: milestone.color }}
+                      strokeWidth={1.6}
+                    />
+                  </div>
+                  {milestone.current && (
+                    <span className="mt-2 w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  )}
+                </div>
+
+                {/* Card */}
+                <div
+                  className={`timeline-card flex-1 rounded-2xl p-6 sm:p-7 ${
+                    milestone.highlight || milestone.current
+                      ? "clay-card-elevated"
+                      : "clay-card"
+                  }`}
+                >
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <span
+                      className="text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-lg"
+                      style={{
+                        background: `${milestone.color}15`,
+                        color: milestone.color,
+                      }}
+                    >
+                      {milestone.year}
+                    </span>
+                    {milestone.current && (
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
+                        <Circle
+                          size={6}
+                          fill="currentColor"
+                          className="text-emerald-400"
+                        />
+                        Current
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="text-white font-bold text-lg mb-2">
+                    {milestone.title}
+                  </h3>
+
+                  {milestone.subtitle && (
+                    <p className="text-primary/70 text-sm font-medium mb-3">
+                      {milestone.subtitle}
+                    </p>
+                  )}
+
+                  {/* Regular items */}
+                  {milestone.items && (
+                    <ul className="space-y-2 mt-3">
+                      {milestone.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2.5 text-white/45 text-sm leading-relaxed"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                            style={{ background: `${milestone.color}60` }}
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Sub-events (2026) */}
+                  {milestone.events && (
+                    <div className="mt-4 space-y-4">
+                      {milestone.events.map((event) => (
+                        <div
+                          key={event.label}
+                          className="pl-4 border-l-2 border-white/8"
+                        >
+                          <p className="text-white/70 text-sm font-semibold mb-2">
+                            {event.label}
+                          </p>
+                          <ul className="space-y-1.5">
+                            {event.items.map((item) => (
+                              <li
+                                key={item}
+                                className="flex items-start gap-2 text-white/40 text-sm leading-relaxed"
+                              >
+                                <span
+                                  className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
+                                  style={{ background: `${milestone.color}50` }}
+                                />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-              <h3 className="text-white font-semibold text-base mb-2">
-                {item.title}
-              </h3>
-              <p className="text-white/40 text-sm leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

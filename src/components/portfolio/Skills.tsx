@@ -7,29 +7,32 @@ gsap.registerPlugin(ScrollTrigger);
 const SKILL_GROUPS = [
   {
     title: "Programming",
-    skills: ["Java", "Python", "JavaScript", "TypeScript", "HTML", "CSS"],
+    skills: ["Java", "Python", "JavaScript", "HTML", "CSS"],
     color: "#7c9cf5",
   },
   {
-    title: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "Responsive Web Design"],
+    title: "Frontend & Web",
+    skills: [
+      "React",
+      "Tailwind CSS",
+      "Responsive Web Design",
+      "Modern Web Development",
+    ],
     color: "#a78bfa",
   },
   {
-    title: "Tools",
-    skills: ["Git", "GitHub", "VS Code", "Vercel"],
+    title: "AI & Development",
+    skills: [
+      "AI-powered Web Applications",
+      "AI-assisted Development",
+      "API Integration",
+    ],
     color: "#6ee7b7",
   },
   {
-    title: "Core Concepts",
-    skills: [
-      "Data Structures & Algorithms",
-      "Object-Oriented Programming",
-      "Operating Systems",
-      "DBMS",
-      "Computer Networks",
-    ],
-    color: "#f472b6",
+    title: "Tools & Platforms",
+    skills: ["Git", "GitHub", "VS Code", "Vercel"],
+    color: "#fbbf24",
   },
 ];
 
@@ -82,7 +85,7 @@ export function Skills() {
             Technical Skills
           </h2>
           <p className="text-white/45 max-w-xl mx-auto text-lg">
-            A snapshot of the technologies and concepts I work with.
+            Technologies and concepts I work with.
           </p>
         </div>
 
@@ -106,9 +109,7 @@ export function Skills() {
                   <span
                     key={skill}
                     className="skill-pill clay-btn px-4 py-2 text-sm text-white/60 hover:text-white hover:bg-white/8 transition-all duration-300 rounded-xl cursor-default"
-                    style={{
-                      borderColor: `${group.color}20`,
-                    }}
+                    style={{ borderColor: `${group.color}20` }}
                   >
                     {skill}
                   </span>

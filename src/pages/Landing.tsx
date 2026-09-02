@@ -4,8 +4,9 @@ import { About } from "@/components/portfolio/About";
 import { Skills } from "@/components/portfolio/Skills";
 import { Projects } from "@/components/portfolio/Projects";
 import { Experience } from "@/components/portfolio/Experience";
-import { Education } from "@/components/portfolio/Education";
 import { Journey } from "@/components/portfolio/Journey";
+import { Certificates } from "@/components/portfolio/Certificates";
+import { Education } from "@/components/portfolio/Education";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 
@@ -19,8 +20,11 @@ export default function Landing() {
         <Skills />
         <Projects />
         <Experience />
+        <div id="journey">
+          <Journey />
+        </div>
+        <Certificates />
         <Education />
-        <Journey />
         <Contact />
       </main>
       <Footer />

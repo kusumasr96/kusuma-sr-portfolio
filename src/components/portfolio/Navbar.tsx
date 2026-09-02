@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Journey", href: "#journey" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -40,7 +41,6 @@ export function Navbar() {
       aria-label="Main navigation"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
         <button
           onClick={() => handleNavClick("#home")}
           className="text-lg font-bold tracking-[0.2em] text-white/90 hover:text-primary transition-colors"
@@ -49,7 +49,6 @@ export function Navbar() {
           KUSUMA<span className="text-primary">.</span>SR
         </button>
 
-        {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
@@ -63,7 +62,6 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden clay-btn p-2.5 text-white/70 hover:text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -74,7 +72,6 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-[rgba(13,15,20,0.95)] backdrop-blur-2xl border-t border-white/5">
           <ul className="px-6 py-4 space-y-1">

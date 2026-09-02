@@ -1,35 +1,26 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GraduationCap, Code, Coffee, Brain } from "lucide-react";
+import {
+  Globe,
+  Code,
+  Brain,
+  Cpu,
+  Puzzle,
+  Lightbulb,
+  Layers,
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CARDS = [
-  {
-    icon: GraduationCap,
-    title: "3rd Year CSE",
-    desc: "Computer Science Engineering student with a passion for technology and innovation.",
-    color: "#7c9cf5",
-  },
-  {
-    icon: Code,
-    title: "Frontend Developer",
-    desc: "Building responsive, interactive web experiences with modern frameworks.",
-    color: "#a78bfa",
-  },
-  {
-    icon: Coffee,
-    title: "Java + DSA",
-    desc: "Strengthening problem-solving skills through data structures and algorithms.",
-    color: "#6ee7b7",
-  },
-  {
-    icon: Brain,
-    title: "AI & Web Projects",
-    desc: "Exploring AI-powered applications and building practical web solutions.",
-    color: "#f472b6",
-  },
+const INTERESTS = [
+  { icon: Globe, label: "Frontend Development", color: "#7c9cf5" },
+  { icon: Code, label: "Web Development", color: "#a78bfa" },
+  { icon: Brain, label: "Artificial Intelligence", color: "#6ee7b7" },
+  { icon: Cpu, label: "Java", color: "#fbbf24" },
+  { icon: Puzzle, label: "Data Structures & Algorithms", color: "#f472b6" },
+  { icon: Lightbulb, label: "Problem Solving", color: "#fb923c" },
+  { icon: Layers, label: "Building Real-World Projects", color: "#38bdf8" },
 ];
 
 export function About() {
@@ -50,23 +41,17 @@ export function About() {
         y: 30,
         duration: 0.8,
         ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-        },
+        scrollTrigger: { trigger: el, start: "top 85%" },
       });
 
-      gsap.from(".about-card", {
+      gsap.from(".about-interest", {
         opacity: 0,
-        y: 40,
-        scale: 0.95,
-        duration: 0.7,
+        y: 20,
+        scale: 0.9,
+        duration: 0.5,
         ease: "power3.out",
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 70%",
-        },
+        stagger: 0.07,
+        scrollTrigger: { trigger: el, start: "top 70%" },
       });
     }, el);
 
@@ -79,8 +64,7 @@ export function About() {
       ref={sectionRef}
       className="clay-section py-28 sm:py-36 px-6"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
+      <div className="max-w-5xl mx-auto">
         <div className="about-heading text-center mb-16">
           <span className="text-xs tracking-[0.3em] uppercase text-primary/70 font-semibold mb-4 block">
             Introduction
@@ -88,40 +72,37 @@ export function About() {
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             About Me
           </h2>
-          <p className="text-white/45 max-w-2xl mx-auto text-lg leading-relaxed">
-            I am a Computer Science Engineering student passionate about
-            building modern web experiences and practical software solutions. I
-            enjoy working with frontend technologies, learning Java and Data
-            Structures &amp; Algorithms, and exploring AI-powered applications.
+          <p className="text-white/45 max-w-3xl mx-auto text-lg leading-relaxed">
+            I am a 3rd-year Computer Science Engineering student passionate
+            about building modern web applications and solving real-world
+            problems through technology. I enjoy creating responsive,
+            interactive and user-focused experiences while continuously
+            improving my programming and problem-solving skills.
           </p>
         </div>
 
-        {/* Info cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {CARDS.map((card) => (
+        <div className="flex flex-wrap justify-center gap-3">
+          {INTERESTS.map((interest) => (
             <div
-              key={card.title}
-              className="about-card clay-card p-7 rounded-2xl group hover:scale-[1.03] transition-all duration-500 cursor-default"
+              key={interest.label}
+              className="about-interest clay-card px-5 py-3 rounded-2xl flex items-center gap-3 group hover:scale-[1.04] transition-all duration-400 cursor-default"
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110"
+                className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-400 group-hover:scale-110"
                 style={{
-                  background: `${card.color}18`,
-                  boxShadow: `0 0 24px ${card.color}15`,
+                  background: `${interest.color}15`,
+                  boxShadow: `0 0 20px ${interest.color}10`,
                 }}
               >
-                <card.icon
-                  size={22}
-                  style={{ color: card.color }}
+                <interest.icon
+                  size={17}
+                  style={{ color: interest.color }}
                   strokeWidth={1.8}
                 />
               </div>
-              <h3 className="text-white font-semibold text-base mb-2">
-                {card.title}
-              </h3>
-              <p className="text-white/40 text-sm leading-relaxed">
-                {card.desc}
-              </p>
+              <span className="text-white/65 text-sm font-medium group-hover:text-white transition-colors duration-300">
+                {interest.label}
+              </span>
             </div>
           ))}
         </div>
